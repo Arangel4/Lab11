@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,21 +6,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Lab11.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Lab11.Pages
 {
-    public class IndexModel : PageModel
+    public class ProfessorModel : PageModel
     {
         private readonly LabDbContext _context;
         public List<Professor> Professors {get; set;}
-        
-        public IndexModel(LabDbContext context)
+        public SelectList ProfessorDropDown {get; set;}
+
+        public ProfessorModel(LabDbContext context)
         {
             _context = context;
         }
-        public void OnGet()
+
+        public void OnPost()
         {
             Professors = _context.Professor.ToList();
+            ProfessorDropDown = new SelectList(Professors, "ProfessorID", "FirstName", 2);
         }
     }
 }

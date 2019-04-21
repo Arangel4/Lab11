@@ -1,0 +1,16 @@
+@page
+@model ProfessorModel
+@{
+    ViewData["Title"] = "Professor Page";
+}
+
+<h3>Professors</h3>
+<hr />
+
+<label class="control-label"></label>
+<p>Select a Professor</p>
+<form method = "post">
+    <select asp-items="Model.ProfessorDropDown" class="form-control">
+        <option value = "">-- Select Professor --</option>
+    </select>
+</form>
