@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Lab11.Models
 {
@@ -7,5 +8,6 @@ namespace Lab11.Models
         public int ProfessorId {get; set;}
         public string FirstName {get; set;}
         public string LastName {get; set;}
+        public List<Course> Courses {get; set;} // Navigation property. A Professor can teach many courses.
     }
 }

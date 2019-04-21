@@ -15,6 +15,22 @@ namespace Lab11.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
+            modelBuilder.Entity("Lab11.Models.Course", b =>
+                {
+                    b.Property<int>("CourseId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("ProfessorId");
+
+                    b.HasKey("CourseId");
+
+                    b.HasIndex("ProfessorId");
+
+                    b.ToTable("Course");
+                });
+
             modelBuilder.Entity("Lab11.Models.Professor", b =>
                 {
                     b.Property<int>("ProfessorId")
@@ -27,6 +43,14 @@ namespace Lab11.Migrations
                     b.HasKey("ProfessorId");
 
                     b.ToTable("Professor");
+                });
+
+            modelBuilder.Entity("Lab11.Models.Course", b =>
+                {
+                    b.HasOne("Lab11.Models.Professor", "Professor")
+                        .WithMany("Courses")
+                        .HasForeignKey("ProfessorId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

@@ -23,13 +23,20 @@ namespace Lab11.Models
                 new Professor
                 {
                     FirstName = "Ariana",
-                    LastName = "Rangel"
+                    LastName = "Rangel",
+                    Courses = new List<Course> {
+                        new Course {Description = "CIDM 4490"},
+                        new Course {Description = "MGT 1346"}
+                    }
                 },
 
                 new Professor
                 {
                     FirstName = "Alex",
-                    LastName = "Tiroff"
+                    LastName = "Tiroff",
+                    Courses = new List<Course> {
+                        new Course {Description = "CIDM 2340"}
+                    }
                 },
 
                 new Professor

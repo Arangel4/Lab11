@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab11.Migrations
 {
     [DbContext(typeof(LabDbContext))]
-    [Migration("20190421010159_InitialCreate")]
+    [Migration("20190421234617_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -16,6 +16,22 @@ namespace Lab11.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
+
+            modelBuilder.Entity("Lab11.Models.Course", b =>
+                {
+                    b.Property<int>("CourseId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("ProfessorId");
+
+                    b.HasKey("CourseId");
+
+                    b.HasIndex("ProfessorId");
+
+                    b.ToTable("Course");
+                });
 
             modelBuilder.Entity("Lab11.Models.Professor", b =>
                 {
@@ -29,6 +45,14 @@ namespace Lab11.Migrations
                     b.HasKey("ProfessorId");
 
                     b.ToTable("Professor");
+                });
+
+            modelBuilder.Entity("Lab11.Models.Course", b =>
+                {
+                    b.HasOne("Lab11.Models.Professor", "Professor")
+                        .WithMany("Courses")
+                        .HasForeignKey("ProfessorId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
