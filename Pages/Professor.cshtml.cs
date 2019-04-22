@@ -26,5 +26,11 @@ namespace Lab11.Pages
             Professors = _context.Professor.ToList();
             ProfessorDropDown = new SelectList(Professors, "ProfessorID", "FirstName", 2);
         }
+
+        public void OnGet()
+        {
+            Professors = _context.Professor.ToList();
+            ProfessorDropDown = new SelectList(Professors, "ProfessorID", "FirstName", 2);
+        }
     }
 }
