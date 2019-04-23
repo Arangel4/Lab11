@@ -20,15 +20,17 @@ namespace Lab11.Pages
         {
             _context = context;
         }
-
+        
         public void OnPost()
         {
+            var professors = _context.Professor.Include(c => c.Courses).Select(p => p);
             Professors = _context.Professor.ToList();
             ProfessorDropDown = new SelectList(Professors, "ProfessorID", "FirstName", 2);
         }
 
         public void OnGet()
         {
+            var professors = _context.Professor.Include(c => c.Courses).Select(p => p);
             Professors = _context.Professor.ToList();
             ProfessorDropDown = new SelectList(Professors, "ProfessorID", "FirstName", 2);
         }

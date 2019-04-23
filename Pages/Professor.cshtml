@@ -14,3 +14,23 @@
         <option value = "">-- Select Professor --</option>
     </select>
 </form>
+
+<p>You have selected {@Model.ProfessorDropDown}.</p>
+@{
+    if(Professor != null)
+    {
+        <p>This professor teaches:</p>
+        foreach(var c in Model.Courses)
+        {
+            <p>@c.Description</p>
+        }
+    }
+    if (Course.Description == null)
+    {
+        @:This professor isn't teaching an courses.
+    }
+    else 
+    {
+        
+    } 
+}
